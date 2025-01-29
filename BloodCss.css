@@ -1,4 +1,4 @@
-
+/*Register page Styles start*/
 body {
     background-image: url('images/BloodBackground.jpeg'); 
     background-size: cover; 
@@ -67,3 +67,4 @@ button:hover {
     font-size: 14px;
     color: #666;
 }
+/*Register page Styles end*/

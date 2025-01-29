@@ -1,3 +1,4 @@
+/*Register page validation start*/
 function validateForm() {
     const name = document.getElementById("name").value;
     const namePattern = /^[A-Za-z ]+$/;
@@ -34,3 +35,4 @@ function validateForm() {
 
     return true;
 }
+/*Register page validation end*/
