@@ -119,3 +119,17 @@ function findDonors(event) {
 
     return false; 
 }
+
+function highlightButton() {
+    let button = document.getElementById("find-button");
+    button.style.backgroundColor = "red"; 
+    button.style.transform = "scale(1.1)";
+    button.style.border = "2px solid white";
+
+    setTimeout(() => {
+        button.style.backgroundColor = ""; 
+        button.style.transform = "scale(1)"; 
+        button.style.border = ""; 
+    }, 3000); 
+}
+

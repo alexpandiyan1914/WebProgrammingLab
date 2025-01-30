@@ -1,6 +1,6 @@
 /*Register page Styles start*/
 body {
-    background-image: url('images/BloodBackground.jpeg'); 
+    background-image: url('../images/BloodBackground.jpeg'); 
     background-size: cover; 
     background-repeat: no-repeat; 
     background-attachment: fixed; 

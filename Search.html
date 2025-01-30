@@ -5,14 +5,14 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Search Donors</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='SearchCSS.css'>
-    <script src='main.js'></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/SearchCSS.css'>
+    <script src='js/main.js'></script>
 </head>
 <body>
     <div class="total_container">
     <div class="container_search">
         <h1 class="h_in_search">Search Donors here !</h1>
-        <form id="donorForm" action="#" method="post" onreset="resetMessage()" onsubmit="return findDonors(event)" >
+        <form id="donorForm" action="#" method="POST" onreset="resetMessage()" onsubmit="return findDonors(event)" >
             <label>Blood Group:</label>
             <select id="bgroup_search" name="blood-group">
                 <option selected hidden>Select blood-group</option>

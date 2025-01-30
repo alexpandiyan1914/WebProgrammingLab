@@ -1,5 +1,5 @@
 body {
-    background-image: url('images/Blood_search.jpg'); 
+    background-image: url('../images/Blood_search.jpg'); 
     background-size: cover; 
     background-repeat: no-repeat; 
     background-attachment: fixed; 
@@ -61,13 +61,14 @@ label{
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    transition: transform 0.3s ease, background-color 0.3s ease, border 0.3s ease;
 }
 
 #reset_search:hover {
-    background-color: #ba00007e;
+    background-color: #840404;
 }
 #find-button:hover{
-    background-color: #ba00007e;
+    background-color: #840404;
    
 }
 
