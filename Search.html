@@ -1,0 +1,62 @@
+
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Search Donors</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='SearchCSS.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <div class="total_container">
+    <div class="container_search">
+        <h1 class="h_in_search">Search Donors here !</h1>
+        <form id="donorForm" action="#" method="post" onreset="resetMessage()" onsubmit="return findDonors(event)" >
+            <label>Blood Group:</label>
+            <select id="bgroup_search" name="blood-group">
+                <option selected hidden>Select blood-group</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select><br>
+            <label for="country_search">Country:</label>
+            <select id="country_search" name="country">
+                <option selected hidden>Select Country</option>
+                <option value="USA">USA</option>
+                <option value="India">India</option>
+                <option value="UK">UK</option>
+                <option value="Australia">Australia</option>
+            </select><br>
+            <label for="state_search">State:</label>
+            <select id="state_search" name="state">
+                <option selected hidden>Select State</option>
+                <option value="Kerala">Kerala</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Andra pradesh">Andra pradesh</option>
+                <option value="Karnataka">Karnataka</option>
+            </select><br>
+            <label for="district_search">District:</label>
+            <select id="district_search" name="district">
+                <option selected hidden>Select District</option>
+                <option value="Madurai">Madurai</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Salem">Salem</option>
+                <option value="Coimbatore">Coimbatore</option>
+            </select><br>
+            <button type="submit" id="find-button" onmouseover="highlightButton()">Find Donors</button>
+            <button id="reset_search" type="reset">Reset</button>
+
+        </form>
+    </div>
+    <h2 id="output_heading">Donor Details for this Blood Group !</h2>
+    <div id="donor-list"></div>
+</div>
+   
+</body>
+</html>

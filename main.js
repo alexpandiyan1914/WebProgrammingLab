@@ -36,3 +36,86 @@ function validateForm() {
     return true;
 }
 /*Register page validation end*/
+
+/*Search page start*/
+function resetMessage() {
+    
+    document.getElementById("donor-list").innerHTML = "";
+    document.getElementById("output_heading").innerText = "";
+    alert("Can we reset the Form ?");
+}
+
+function search_validation() {
+
+    let bloodGroup = document.getElementById("bgroup_search").value;
+    let state = document.getElementById("state_search").value;
+    let country = document.getElementById("country_search").value;
+    let district = document.getElementById("district_search").value;
+
+    if (bloodGroup === "Select blood-group") {
+        alert("Please select a valid Blood Group.\n");
+        return false;
+    }
+    if (state === "Select State") {
+        alert("Please select a valid State.\n");
+        return false;
+    }
+    if (country === "Select Country") {
+        alert("Please select a valid Country.\n");
+        return false;
+    }
+    if (district === "Select District") {
+        alert("Please select a valid District.\n");
+        return false;
+    }    
+    return true;
+};
+
+const donors = [
+    { name: "Alexpandiyan A", bloodGroup: "o+", city: "Madurai", contact: "1234...." },
+    { name: "Prem kumar M", bloodGroup: "O+", city: "Madurai", contact: "1234...." },
+    { name: "Sri charan S", bloodGroup: "O+", city: "Madurai", contact: "1234...." },
+    { name: "Pavan B", bloodGroup: "O+", city: "Madurai", contact: "1234...." },
+    { name: "Sangkrishna", bloodGroup: "A+", city: "chennai", contact: "1234...." },
+    { name: "Alagan A", bloodGroup: "A+", city: "Chennai", contact: "1234...." },
+    { name: "Kanishk samurai K", bloodGroup: "O+", city: "Salem", contact: "1234...." },
+    { name: "Agasthiya S", bloodGroup: "O+", city: "Salem", contact: "1234...." }
+];
+
+function findDonors(event) {
+    event.preventDefault();   
+
+    search_validation(); 
+    if (!search_validation()) {
+        return false; 
+    }
+
+    let selectedGroup = document.getElementById("bgroup_search").value;
+    let donorListDiv = document.getElementById("donor-list");
+    let outputHeading = document.getElementById("output_heading");
+    donorListDiv.innerHTML = "";
+
+
+    let filteredDonors = donors.filter(donor => donor.bloodGroup === selectedGroup);
+
+    if (filteredDonors.length === 0) {
+        donorListDiv.innerHTML = "<p>No donors found for this blood group.</p>";
+        return false;
+    }
+
+    outputHeading.style.display = "block";  
+
+    filteredDonors.forEach(donor => {
+        let donorCard = `
+            <div class="donor-card" style="border: 1px solid #ccc; padding: 10px; margin: 5px; border-radius: 5px;">
+                <strong>${donor.name}</strong><br>
+                Blood Group: ${donor.bloodGroup} <br>
+                City: ${donor.city} <br>
+                Contact: ${donor.contact}
+            </div>
+        `;
+        donorListDiv.innerHTML += donorCard;
+    });
+
+    return false; 
+}
