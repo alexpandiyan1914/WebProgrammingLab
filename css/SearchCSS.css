@@ -36,7 +36,7 @@ input, select, textarea {
 
 #find-button{
     display: block;
-    margin-top: 20px;
+    margin-top: 10px;
     width: 100%;
     padding: 10px;
     background-color: #D50000;
@@ -45,9 +45,24 @@ input, select, textarea {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    transition: transform 0.3s ease, background-color 0.3s ease, border 0.3s ease;
 }
+
 label{
     font-weight: bold;
+}
+
+#back_search{
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #D50000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
 #reset_search{
@@ -61,15 +76,17 @@ label{
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    transition: transform 0.3s ease, background-color 0.3s ease, border 0.3s ease;
+    
 }
 
 #reset_search:hover {
     background-color: #840404;
 }
 #find-button:hover{
-    background-color: #840404;
-   
+    background-color: #840404;  
+}
+#back_search:hover{
+    background-color: #840404;  
 }
 
 /* Container for donor list */

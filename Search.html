@@ -49,8 +49,9 @@
                 <option value="Salem">Salem</option>
                 <option value="Coimbatore">Coimbatore</option>
             </select><br>
-            <button type="submit" id="find-button" onmouseover="highlightButton()">Find Donors</button>
+            <button type="submit" id="find-button" onmouseover="highlightButton()" ondblclic="doubleclick()">Find Donors</button>
             <button id="reset_search" type="reset">Reset</button>
+            <button id="back_search" onclick="goBack()">Back</button>
 
         </form>
     </div>

@@ -38,6 +38,12 @@ function validateForm() {
 /*Register page validation end*/
 
 /*Search page start*/
+let isBackButtonClicked = false;
+function goBack() {  
+    isBackButtonClicked = true;
+    window.history.back();
+}
+
 function resetMessage() {
     
     document.getElementById("donor-list").innerHTML = "";
@@ -46,6 +52,9 @@ function resetMessage() {
 }
 
 function search_validation() {
+    if (isBackButtonClicked) {
+        return true;  
+    }
 
     let bloodGroup = document.getElementById("bgroup_search").value;
     let state = document.getElementById("state_search").value;
@@ -133,3 +142,10 @@ function highlightButton() {
     }, 3000); 
 }
 
+function doubleclick(){
+    alert("double clicked !");
+}
+
+function goBack() {
+    window.history.back();  // This takes the user to the previous page in history
+}
