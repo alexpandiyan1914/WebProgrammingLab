@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+           
+            background-image: url('../images/BloodBackground.jpeg'); 
+            background-size: cover; 
+            background-repeat: no-repeat; 
+            background-attachment: fixed; 
+            background-position: center; 
+            font-family: Arial, sans-serif;
+            /* background: #f4f4f4; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            background:  #f3e8e8;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 500px rgba(0, 0, 0, 0.1);
+            text-align: center; 
+        }
+        .login-container h2 {
+            margin-bottom: 30px;
+            margin-left: 10px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+            margin-right: 10px;   
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-btn {
+            background: #D50000;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+        }
+        .login-btn:hover {
+            background: #a50202e6;
+        }
+        .links {
+            margin-top: 20px;
+        }
+        .links a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        .links,a:hover{
+           
+            color: #084d96;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <div class="input-group">
+            <input type="text" id="username" placeholder="Username">
+        </div>
+        <div class="input-group">
+            <input type="password" id="password" placeholder="Password">
+        </div>
+        <button class="login-btn" id="login-btn" onclick="Search.html">Login</button>
+        <div class="links">
+            <a href="#">Forgot Password?</a> | <a href="../Register.html">Register Here</a>
+        </div>
+        <p id="login-message" style="color: red; margin-top: 10px;"></p>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $("#login-btn").click(function() {
+                var username = $("#username").val();
+                var password = $("#password").val();
+
+                if(username == "" || password == "") {
+                    $("#login-message").text("Please fill all fields.");
+                    return;
+                }
+                window.location.href = "../Search.html";
+
+                $(document).ready(function() {
+    $("#login-btn").click(function() {
+        var username = $("#username").val();
+        var password = $("#password").val();
+
+        if (username == "" || password == "") {
+            $("#login-message").text("Please fill all fields.");
+            return;
+        }
+
+        // $.ajax({
+        //     url: "login.php",
+        //     type: "POST",
+        //     data: { username: username, password: password },
+        //     success: function(response) {
+        //         if (response === "success") {
+        //             window.location.href = "Search.html"; 
+        //         } else {
+        //             $("#login-message").text("Invalid Username or Password.");
+        //         }
+        //     },
+        //     error: function() {
+        //         $("#login-message").text("Error logging in. Try again.");
+        //     }
+        // });
+    });
+});
+
+            });
+        });
+    </script>
+</body>
+</html>
+
