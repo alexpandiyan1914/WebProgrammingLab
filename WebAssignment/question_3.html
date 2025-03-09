@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting System</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 50%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .candidate {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            background: #eee;
+        }
+
+        .vote-btn {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .vote-btn:hover {
+            background-color: #218838;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Voting System</h2>
+    
+    <div class="container">
+        <div class="candidate">
+            <span>Candidate 1</span>
+            <button class="vote-btn" data-id="1">Vote</button>
+            <span class="votes" id="candidate1-votes">0</span> Votes
+        </div>
+
+        <div class="candidate">
+            <span>Candidate 2</span>
+            <button class="vote-btn" data-id="2">Vote</button>
+            <span class="votes" id="candidate2-votes">0</span> Votes
+        </div>
+
+        <div class="candidate">
+            <span>Candidate 3</span>
+            <button class="vote-btn" data-id="3">Vote</button>
+            <span class="votes" id="candidate3-votes">0</span> Votes
+        </div>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $(".vote-btn").click(function() {
+                let candidateId = $(this).attr("data-id");
+                let voteCount = $("#candidate" + candidateId + "-votes");
+                
+                // Increment vote count
+                let currentVotes = parseInt(voteCount.text());
+                voteCount.text(currentVotes + 1);
+
+                // Display total votes
+                let totalVotes = 0;
+                $(".votes").each(function() {
+                    totalVotes += parseInt($(this).text());
+                });
+
+                $("#result").text("Total Votes Cast: " + totalVotes);
+            });
+        });
+    </script>
+
+</body>
+</html>
