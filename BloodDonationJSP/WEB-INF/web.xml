@@ -1,0 +1,5 @@
+<web-app>
+    <welcome-file-list>
+        <welcome-file>register.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>
