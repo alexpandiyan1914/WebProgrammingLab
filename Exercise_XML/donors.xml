@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<donors>
+  <donor>
+    <name>Arjun</name>
+    <bloodgroup>O+</bloodgroup>
+    <contact>9876543210</contact>
+  </donor>
+  <donor>
+    <name>Sneha</name>
+    <bloodgroup>A-</bloodgroup>
+    <contact>9123456780</contact>
+  </donor>
+</donors>
