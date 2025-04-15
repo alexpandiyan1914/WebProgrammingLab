@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blood Donation Management</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f2f2f2;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #c0392b;
+    }
+
+    .form-container, .search-container, .donor-list {
+      background: white;
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 10px;
+      width: 80%;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    input, select, button {
+      padding: 8px;
+      margin: 5px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      background: #e74c3c;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      padding: 10px;
+      background: #fafafa;
+      margin-bottom: 5px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Blood Donation Management</h1>
+
+  <div class="form-container">
+    <h2>Register Donor</h2>
+    <input type="text" id="name" placeholder="Full Name" required />
+    <input type="text" id="bloodgroup" placeholder="Blood Group (e.g., A+, O-)" required />
+    <input type="text" id="location" placeholder="Location" required />
+    <button onclick="registerDonor()">Register Donor</button>
+  </div>
+
+  <div class="search-container">
+    <h2>Search Donor by Blood Group</h2>
+    <input type="text" id="searchGroup" placeholder="Enter blood group to search" />
+    <button onclick="searchDonors()">Search</button>
+  </div>
+
+  <div class="donor-list">
+    <h2>All Donors</h2>
+    <ul id="donorList"></ul>
+  </div>
+
+  <script>
+    // Create XML DOM manually
+    const xmlDoc = document.implementation.createDocument("", "", null);
+    const root = xmlDoc.createElement("donors");
+    xmlDoc.appendChild(root);
+
+    function registerDonor() {
+      const name = document.getElementById("name").value.trim();
+      const bloodgroup = document.getElementById("bloodgroup").value.trim().toUpperCase();
+      const location = document.getElementById("location").value.trim();
+
+      if (!name || !bloodgroup || !location) {
+        alert("Please fill all fields.");
+        return;
+      }
+
+      const donor = xmlDoc.createElement("donor");
+
+      const nameNode = xmlDoc.createElement("name");
+      nameNode.textContent = name;
+
+      const groupNode = xmlDoc.createElement("bloodgroup");
+      groupNode.textContent = bloodgroup;
+
+      const locationNode = xmlDoc.createElement("location");
+      locationNode.textContent = location;
+
+      donor.appendChild(nameNode);
+      donor.appendChild(groupNode);
+      donor.appendChild(locationNode);
+
+      root.appendChild(donor);
+
+      alert("Donor Registered!");
+      displayAllDonors();
+      clearFields();
+    }
+
+    function displayAllDonors(filtered = null) {
+      const donorList = document.getElementById("donorList");
+      donorList.innerHTML = "";
+
+      const donors = xmlDoc.getElementsByTagName("donor");
+
+      for (let i = 0; i < donors.length; i++) {
+        const group = donors[i].getElementsByTagName("bloodgroup")[0].textContent;
+
+        if (filtered && group !== filtered.toUpperCase()) continue;
+
+        const name = donors[i].getElementsByTagName("name")[0].textContent;
+        const location = donors[i].getElementsByTagName("location")[0].textContent;
+
+        const li = document.createElement("li");
+        li.innerHTML = `<strong>${name}</strong> - Blood Group: ${group} - Location: ${location}`;
+        donorList.appendChild(li);
+      }
+
+      if (filtered && donorList.innerHTML === "") {
+        donorList.innerHTML = "<li>No donors found for this group.</li>";
+      }
+    }
+
+    function searchDonors() {
+      const group = document.getElementById("searchGroup").value;
+      if (!group) {
+        alert("Please enter blood group to search");
+        return;
+      }
+      displayAllDonors(group);
+    }
+
+    function clearFields() {
+      document.getElementById("name").value = "";
+      document.getElementById("bloodgroup").value = "";
+      document.getElementById("location").value = "";
+    }
+
+    // Load initial donors if needed
+    displayAllDonors();
+  </script>
+
+</body>
+</html>
