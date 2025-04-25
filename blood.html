@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML Parser Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #output {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: monospace;
+            font-size: 14px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>XML Parser Example</h1>
+
+    <div>
+        <button onclick="parseXML()">Parse XML</button>
+    </div>
+
+    <h2>Parsed Data:</h2>
+    <pre id="output"></pre>
+
+    <script>
+        function parseXML() {
+            const xmlData = `
+                <donors>
+                    <donor>
+                        <name>Alex Pandiyan</name>
+                        <bloodType>O+</bloodType>
+                        <lastDonation>2024-03-10</lastDonation>
+                    </donor>
+                    <donor>
+                        <name>Prem kumar</name>
+                        <bloodType>A-</bloodType>
+                        <lastDonation>2024-01-15</lastDonation>
+                    </donor>
+                    <donor>
+                        <name>Sricharan</name>
+                        <bloodType>B+</bloodType>
+                        <lastDonation>2024-04-02</lastDonation>
+                    </donor>
+                    <donor>
+                        <name>Siva Kumar</name>
+                        <bloodType>O-</bloodType>
+                        <lastDonation>2024-04-10</lastDonation>
+                    </donor>
+                    <donor>
+                        <name>Bala Subramanian</name>
+                        <bloodType>A+</bloodType>
+                        <lastDonation>2024-02-25</lastDonation>
+                    </donor>
+                    <donor>
+                        <name>Priya Rani</name>
+                        <bloodType>AB+</bloodType>
+                        <lastDonation>2024-03-15</lastDonation>
+                    </donor>
+                    <donor>
+                        <name>Kumaravel</name>
+                        <bloodType>B-</bloodType>
+                        <lastDonation>2024-01-30</lastDonation>
+                    </donor>
+                    <donor>
+                        <name>Rajeshwari</name>
+                        <bloodType>O+</bloodType>
+                        <lastDonation>2024-04-05</lastDonation>
+                    </donor>
+                </donors>
+            `;
+
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(xmlData, "application/xml");
+
+            const donors = xmlDoc.getElementsByTagName('donor');
+            let output = '';
+
+            for (let i = 0; i < donors.length; i++) {
+                const name = donors[i].getElementsByTagName('name')[0].childNodes[0].nodeValue;
+                const bloodType = donors[i].getElementsByTagName('bloodType')[0].childNodes[0].nodeValue;
+                const lastDonation = donors[i].getElementsByTagName('lastDonation')[0].childNodes[0].nodeValue;
+
+                output += `Donor ${i + 1}:\n`;
+                output += `Name: ${name}\n`;
+                output += `Blood Type: ${bloodType}\n`;
+                output += `Last Donation: ${lastDonation}\n\n`;
+            }
+
+            document.getElementById('output').textContent = output;
+        }
+    </script>
+
+</body>
+</html>
